@@ -56,9 +56,9 @@ void its_vector()
     }
 
     //* other iterators
-    v.end();
-    v.rend();
-    v.rbegin();
+    v.end(); //* basically points to the next of the last element in memory address
+    v.rend(); //* reverse iterator in opposite direction of the general allocation of memory
+    v.rbegin(); //* reverse iterator in opposite direction of general allocation of memory
 
     v.back(); //* basically gets the last element of the vector
 
