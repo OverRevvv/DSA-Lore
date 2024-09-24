@@ -1,0 +1,82 @@
+#include <iostream>
+#include <limits.h>
+using namespace std;
+
+int extractionOfLastDigit(int n)
+{
+    if (n > 0)
+    {
+        int lastDigit = n % 10;
+        // cout << lastDigit << endl;
+        int rem = n / 10;
+        extractionOfLastDigit(rem);
+    }
+    else
+    {
+        return 0;
+    }
+
+    /*
+    int cnt = (int)(log10(n) + 1);  //BigO()logn
+    return cnt
+    */
+}
+
+int evenlyDivides(int N)
+{
+    int count = 0;
+    if (N < 1)
+        return 0;
+
+    int temp = N;
+    while (N > 0)
+    {
+        int value = N % 10;
+        if (value != 0 && temp % value == 0)
+        {
+            count++;
+            N /= 10;
+        }
+        return count;
+    }
+
+    // int cnt = 0;
+    // int value = N;
+    // while (N > 0)
+    // {
+    //     int digit = N % 10;
+    //     if (digit != 0 && value % digit == 0)
+    //         cnt++;
+    //     N = N / 10;
+    // }
+    // return cnt;
+}
+
+int reverseInteger(int n)
+{
+    int rev = 0; // Declaring an integer to hold the reversed integer
+    while (n != 0) // Loop till n is not equal to 0 that works for both negative and positive integer
+    {
+        if (rev > INT_MAX / 10 || rev < INT_MIN / 10) return 0; // check 32 bit range if r is outside the range then return 0 
+        int lastDigit = n % 10; // last digit of the number
+        n = n / 10; // removed the last digit from the number
+        rev = rev * 10 + lastDigit; // storeed the last digit in reverse order 
+    }
+    return rev; //returning the reversed integer
+}
+
+int main()
+{
+    // extractionOfLastDigit(7789);
+    // find . -type f -name "*.exe" -exec rm {} \;
+    // evenlyDivides(2446);
+    int x = reverseInteger(123);
+    int y = reverseInteger(-123);
+    int z = reverseInteger(120);
+    cout << x << endl;
+    cout << y << endl;
+    cout << z << endl;
+    // cout<<"thefuckishappening";
+
+    return 0;
+}
