@@ -65,18 +65,36 @@ int reverseInteger(int n)
     return rev; //returning the reversed integer
 }
 
+
+bool checkPalindromeNumber(int x)
+{
+    int reverse = 0; 
+    int temp = x;
+    while (temp > 0) 
+    {
+        if (reverse > INT_MAX / 10 || reverse < INT_MIN / 10) return 0;  
+
+        int lastDigit = temp % 10; 
+        temp = temp / 10; 
+        reverse = reverse * 10 + lastDigit; 
+    }
+    if (reverse == x) return true;
+    else return false;
+}
+
 int main()
 {
     // extractionOfLastDigit(7789);
     // find . -type f -name "*.exe" -exec rm {} \;
     // evenlyDivides(2446);
-    int x = reverseInteger(123);
-    int y = reverseInteger(-123);
-    int z = reverseInteger(120);
-    cout << x << endl;
-    cout << y << endl;
-    cout << z << endl;
-    // cout<<"thefuckishappening";
+
+    // cout << reverseInteger(123) << endl;
+    // cout << reverseInteger(-121) << endl;
+    // cout << reverseInteger(120) << endl;
+
+    cout << checkPalindromeNumber(121) << endl;
+    cout << checkPalindromeNumber(-121) << endl;
+    cout << checkPalindromeNumber(120) << endl;
 
     return 0;
 }
