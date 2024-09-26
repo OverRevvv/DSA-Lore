@@ -54,32 +54,64 @@ int evenlyDivides(int N)
 
 int reverseInteger(int n)
 {
-    int rev = 0; // Declaring an integer to hold the reversed integer
+    int rev = 0;   // Declaring an integer to hold the reversed integer
     while (n != 0) // Loop till n is not equal to 0 that works for both negative and positive integer
     {
-        if (rev > INT_MAX / 10 || rev < INT_MIN / 10) return 0; // check 32 bit range if r is outside the range then return 0 
-        int lastDigit = n % 10; // last digit of the number
-        n = n / 10; // removed the last digit from the number
-        rev = rev * 10 + lastDigit; // storeed the last digit in reverse order 
+        if (rev > INT_MAX / 10 || rev < INT_MIN / 10)
+            return 0;               // check 32 bit range if r is outside the range then return 0
+        int lastDigit = n % 10;     // last digit of the number
+        n = n / 10;                 // removed the last digit from the number
+        rev = rev * 10 + lastDigit; // storeed the last digit in reverse order
     }
-    return rev; //returning the reversed integer
+    return rev; // returning the reversed integer
 }
-
 
 bool checkPalindromeNumber(int x)
 {
-    int reverse = 0; 
+    int reverse = 0;
     int temp = x;
-    while (temp > 0) 
+    while (temp > 0)
     {
-        if (reverse > INT_MAX / 10 || reverse < INT_MIN / 10) return 0;  
+        if (reverse > INT_MAX / 10 || reverse < INT_MIN / 10)
+            return 0;
 
-        int lastDigit = temp % 10; 
-        temp = temp / 10; 
-        reverse = reverse * 10 + lastDigit; 
+        int lastDigit = temp % 10;
+        temp = temp / 10;
+        reverse = reverse * 10 + lastDigit;
     }
-    if (reverse == x) return true;
-    else return false;
+    if (reverse == x)
+        return true;
+    else
+        return false;
+}
+
+bool checkArmstrongNumber(int x)
+{
+    int sum = 0;
+    int temp = x;
+    while (temp > 0)
+    {
+        if (sum > INT_MAX / 10 || sum < INT_MIN / 10)
+            return 0;
+
+        int ld = temp % 10;
+        temp = temp / 10;
+        sum = sum + (ld * ld * ld);
+    }
+    if (sum == x)
+        return true;
+    else
+        return false;
+}
+
+int sumOfAllDivisors(int x)
+{
+    int sum = 0;
+    for (int i = 1; i <= x; i++)
+    {
+            sum += i*(x/i);
+    }
+    return sum;
 }
 
 int main()
@@ -92,9 +124,15 @@ int main()
     // cout << reverseInteger(-121) << endl;
     // cout << reverseInteger(120) << endl;
 
-    cout << checkPalindromeNumber(121) << endl;
-    cout << checkPalindromeNumber(-121) << endl;
-    cout << checkPalindromeNumber(120) << endl;
+    // cout << checkPalindromeNumber(121) << endl;
+    // cout << checkPalindromeNumber(-121) << endl;
+    // cout << checkPalindromeNumber(120) << endl;
+
+    // cout << checkArmstrongNumber(153) << endl;
+    // cout << checkArmstrongNumber(35) << endl;
+    // cout << checkArmstrongNumber(371) << endl;
+
+    cout << sumOfAllDivisors(4) << endl;
 
     return 0;
 }
