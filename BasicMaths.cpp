@@ -1,5 +1,8 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 #include <limits.h>
+#include <math.h>
 using namespace std;
 
 int extractionOfLastDigit(int n)
@@ -109,9 +112,33 @@ int sumOfAllDivisors(int x)
     int sum = 0;
     for (int i = 1; i <= x; i++)
     {
-            sum += i*(x/i);
+        sum += i * (x / i);
     }
     return sum;
+}
+
+void printAllDivisors(int x)
+{
+    vector<int> ls;
+
+    for (int i = 1; i <= sqrt(x); i++)
+    {
+        if (x % i == 0)
+        {
+            if ((x / i) == i)
+            {
+                ls.push_back(i);
+            }
+            else
+            {
+                ls.push_back(i);
+                ls.push_back(x / i);
+            }
+        }
+    }
+    sort(ls.begin(), ls.end());
+    for (auto it : ls)
+        cout << it << " ";
 }
 
 int main()
@@ -133,6 +160,7 @@ int main()
     // cout << checkArmstrongNumber(371) << endl;
 
     cout << sumOfAllDivisors(4) << endl;
+    printAllDivisors(36);
 
     return 0;
 }
