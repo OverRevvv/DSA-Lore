@@ -20,7 +20,7 @@ int extractionOfLastDigit(int n)
     }
 
     /*
-    int cnt = (int)(log10(n) + 1);  //BigO()logn
+    int cnt = (int)(log10(n) + 1);  // O(logn)
     return cnt
     */
 }
@@ -42,6 +42,7 @@ int evenlyDivides(int N)
         }
         return count;
     }
+    // O(n)
 
     // int cnt = 0;
     // int value = N;
@@ -67,6 +68,8 @@ int reverseInteger(int n)
         rev = rev * 10 + lastDigit; // storeed the last digit in reverse order
     }
     return rev; // returning the reversed integer
+
+    // O(n)
 }
 
 bool checkPalindromeNumber(int x)
@@ -86,6 +89,8 @@ bool checkPalindromeNumber(int x)
         return true;
     else
         return false;
+
+        // O(n)
 }
 
 bool checkArmstrongNumber(int x)
@@ -105,6 +110,8 @@ bool checkArmstrongNumber(int x)
         return true;
     else
         return false;
+
+        // O(n)
 }
 
 int sumOfAllDivisors(int x)
@@ -115,6 +122,7 @@ int sumOfAllDivisors(int x)
         sum += i * (x / i);
     }
     return sum;
+    // O(n)
 }
 
 void printAllDivisors(int x)
@@ -139,28 +147,51 @@ void printAllDivisors(int x)
     sort(ls.begin(), ls.end());
     for (auto it : ls)
         cout << it << " ";
+
+    // O(sqrt(n))
 }
 
-int main()
+bool checkPrime(int x)
 {
-    // extractionOfLastDigit(7789);
-    // find . -type f -name "*.exe" -exec rm {} \;
-    // evenlyDivides(2446);
-
-    // cout << reverseInteger(123) << endl;
-    // cout << reverseInteger(-121) << endl;
-    // cout << reverseInteger(120) << endl;
-
-    // cout << checkPalindromeNumber(121) << endl;
-    // cout << checkPalindromeNumber(-121) << endl;
-    // cout << checkPalindromeNumber(120) << endl;
-
-    // cout << checkArmstrongNumber(153) << endl;
-    // cout << checkArmstrongNumber(35) << endl;
-    // cout << checkArmstrongNumber(371) << endl;
-
-    cout << sumOfAllDivisors(4) << endl;
-    printAllDivisors(36);
-
-    return 0;
+    // prime numbers basically numbers which got only 2 factors one and itself
+    for (int i = 2; i <= sqrt(x); i++)
+    {
+        if (x % i == 0)
+        {
+            return false;
+        }
+        return true;
+    }
+    // O(sqrt(n))
 }
+    int main()
+    {
+        // extractionOfLastDigit(7789);
+        // find . -type f -name "*.exe" -exec rm {} \;
+        // evenlyDivides(2446);
+
+        // cout << reverseInteger(123) << endl;
+        // cout << reverseInteger(-121) << endl;
+        // cout << reverseInteger(120) << endl;
+
+        // cout << checkPalindromeNumber(121) << endl;
+        // cout << checkPalindromeNumber(-121) << endl;
+        // cout << checkPalindromeNumber(120) << endl;
+
+        // cout << checkArmstrongNumber(153) << endl;
+        // cout << checkArmstrongNumber(35) << endl;
+        // cout << checkArmstrongNumber(371) << endl;
+
+        // cout << sumOfAllDivisors(4) << endl;
+        // printAllDivisors(36);
+        cout<<checkPrime(37)<<endl;
+
+
+
+
+
+
+
+
+        return 0;
+    }
