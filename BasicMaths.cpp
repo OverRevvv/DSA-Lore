@@ -90,7 +90,7 @@ bool checkPalindromeNumber(int x)
     else
         return false;
 
-        // O(n)
+    // O(n)
 }
 
 bool checkArmstrongNumber(int x)
@@ -111,7 +111,7 @@ bool checkArmstrongNumber(int x)
     else
         return false;
 
-        // O(n)
+    // O(n)
 }
 
 int sumOfAllDivisors(int x)
@@ -164,34 +164,50 @@ bool checkPrime(int x)
     }
     // O(sqrt(n))
 }
-    int main()
+
+vector<int> GCDHCF(int a, int b)
+{
+    vector<int> ans;
+
+    for (int i = 1; i <= min(a, b); i++)
     {
-        // extractionOfLastDigit(7789);
-        // find . -type f -name "*.exe" -exec rm {} \;
-        // evenlyDivides(2446);
-
-        // cout << reverseInteger(123) << endl;
-        // cout << reverseInteger(-121) << endl;
-        // cout << reverseInteger(120) << endl;
-
-        // cout << checkPalindromeNumber(121) << endl;
-        // cout << checkPalindromeNumber(-121) << endl;
-        // cout << checkPalindromeNumber(120) << endl;
-
-        // cout << checkArmstrongNumber(153) << endl;
-        // cout << checkArmstrongNumber(35) << endl;
-        // cout << checkArmstrongNumber(371) << endl;
-
-        // cout << sumOfAllDivisors(4) << endl;
-        // printAllDivisors(36);
-        cout<<checkPrime(37)<<endl;
-
-
-
-
-
-
-
-
-        return 0;
+        if (a % i == 0 && b % i == 0)
+        {
+            ans.push_back(i);
+        }
     }
+    
+    return ans;
+
+    // O(min(a,b))
+}
+int main()
+{
+    // extractionOfLastDigit(7789);
+    // find . -type f -name "*.exe" -exec rm {} \;
+    // evenlyDivides(2446);
+
+    // cout << reverseInteger(123) << endl;
+    // cout << reverseInteger(-121) << endl;
+    // cout << reverseInteger(120) << endl;
+
+    // cout << checkPalindromeNumber(121) << endl;
+    // cout << checkPalindromeNumber(-121) << endl;
+    // cout << checkPalindromeNumber(120) << endl;
+
+    // cout << checkArmstrongNumber(153) << endl;
+    // cout << checkArmstrongNumber(35) << endl;
+    // cout << checkArmstrongNumber(371) << endl;
+
+    // cout << sumOfAllDivisors(4) << endl;
+    // printAllDivisors(36);
+    // cout << checkPrime(37) << endl;
+    // cout << checkPrime(37) << endl;
+    // cout << checkPrime(37) << endl;
+
+    vector<int> ans = GCDHCF(12, 16);
+    for (auto it : ans)
+        cout << it << " ";
+
+    return 0;
+}
