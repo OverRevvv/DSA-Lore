@@ -176,10 +176,40 @@ vector<int> GCDHCF(int a, int b)
             ans.push_back(i);
         }
     }
-    
+
+    // another loop
+
+    // for (int i = min(a,b); i <= 1; i--)
+    // {
+    //     if (a % i == 0 && b % i == 0)
+    //     {
+    //         ans.push_back(i);
+    //     }
+    // }
+
     return ans;
 
     // O(min(a,b))
+}
+
+int euclidenAlgoGCD(int a, int b)
+{
+
+    while (a > 0 && b > 0)
+    {
+        if (a > b)
+        {
+            a = a % b;
+        }
+        else
+        {
+            b = b % a;
+        }
+    }
+    if (a == 0)
+        return b;
+    return a;
+    // O(log(min(a,b)))
 }
 int main()
 {
@@ -205,9 +235,11 @@ int main()
     // cout << checkPrime(37) << endl;
     // cout << checkPrime(37) << endl;
 
-    vector<int> ans = GCDHCF(12, 16);
-    for (auto it : ans)
-        cout << it << " ";
+    // vector<int> ans = GCDHCF(12, 16);
+    // for (auto it : ans)
+    //     cout << it << " ";
+
+    cout << euclidenAlgoGCD(12, 16) << endl;
 
     return 0;
 }
